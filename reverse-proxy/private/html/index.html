@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Host Headder Forgery</title>
+</head>
+ 
+<body bgcolor="silver" text="black">
+    <p>
+         <h1>Private Server</h1>
+
+         <lable for="HTTP_HOST">HTTP_HOST</label>
+         <input type="text" name="HTTP_HOST" value=<!--#echo var="HTTP_HOST" --> readonly="readonly" />
+         </br>
+         <lable for="HTTP_HOST">SERVER_NAME</label>
+         <input type="text" name="SERVER_NAME" value=<!--#echo var="SERVER_NAME" --> readonly="readonly" />
+</body>
+</html>

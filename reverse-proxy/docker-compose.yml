@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  private:
+    image: nginx:latest
+    container_name: 'private'
+    privileged: true
+    volumes:
+      - ./private/etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./private/html:/usr/share/nginx/html
+    environment:
+      VIRTUAL_HOST: 'private.lac'
+
+  public:
+    image: nginx:latest
+    container_name: 'public'
+    privileged: true
+    volumes:
+      - ./public/etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./public/html:/usr/share/nginx/html
+    environment:
+      VIRTUAL_HOST: 'public.lac'
+
+  proxy:
+    image: nginx:latest
+    container_name: 'proxy'
+    privileged: true
+    volumes:
+      - ./proxy/etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./proxy/html:/usr/share/nginx/html
+
+    ports:
+      - "80:80"
+    restart: always
+
+networks:
+  default:
+    external:
+      name: shared
